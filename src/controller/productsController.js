@@ -1,4 +1,4 @@
-import { productsCollection } from "../database/db";
+import { productsCollection } from "../database/db.js";
 
 export async function insertProduct( req, res){
 
@@ -6,7 +6,7 @@ export async function insertProduct( req, res){
 
     try{
         productsCollection.insertOne(product)
-        res.status(201).send("New product registered")
+        res.status(201).send("New product registered.")
     }catch(error){
         console.log(error)
         res.status(500).send("Sorry, has a problem with server.")
@@ -20,7 +20,7 @@ export async function getProducts(req, res){
     console.log(object)
 
     try{
-        const product = await productsCollection.find({}).toArray()
+        const product = await productsCollection.toArray()
         console.log(product)
         return res.status(200).send(product)
         
